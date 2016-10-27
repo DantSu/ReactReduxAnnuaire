@@ -1,32 +1,50 @@
 import * as types from '../constant/PersonEdit';
 
+const addOrUpdatePerson = (state, person) => {
+    let find = false;
 
-const edit = (action) => {
-    return {
-        ...action,
-        type: undefined
-    };
+    for(var i in state) {
+        if(!state[i].isCurrentEdited)
+            continue;
+
+        state[i] = person;
+        find = true;
+    }
+
+    if(!find)
+        state.push(person);
+
+    return state;
+};
+
+const setEditedPerson = (state, index) => {
+    for(var i in state) {
+        state[i].isCurrentEdited = false;
+    }
+    state[index].isCurrentEdited = true;
+    return state;
+};
+
+const removePerson = (state, index) => {
+    state.splice(index, 1);
+    return state;
 }
-
 
 const ReducerPersonEdit = (state = [], action) => {
     switch (action.type) {
         case types.ADD_PERSON :
-            return [
-                ...state,
-                edit(action)
-            ]
-            break;
+            return addOrUpdatePerson([...state], {...action.person});
+
         case types.UPDATE_PERSON :
+            return setEditedPerson([...state], action.index);
 
-            break;
         case types.REMOVE_PERSON :
+            return removePerson([...state], action.index);
 
-            break;
         default :
             return state;
     }
-}
+};
 
 
 export default ReducerPersonEdit;

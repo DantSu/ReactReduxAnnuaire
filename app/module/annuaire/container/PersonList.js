@@ -1,8 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import * as types from '../constant/PersonEdit';
 
 import ComponentPersonList from '../component/PersonList';
 
-export const getListPersons = (state) => ({persons : state.annuaire.persons});
+const getListPersons = (state) => ({persons : state.annuaire.persons});
 
-export default connect(getListPersons)(ComponentPersonList);
+const updatePersonFromAnnuaire = (index) => (dispatch, getState) => (
+    dispatch({
+        type : types.UPDATE_PERSON,
+        index
+    })
+);
+const removePersonFromAnnuaire = (index) => (dispatch, getState) => (
+    dispatch({
+        type : types.REMOVE_PERSON,
+        index
+    })
+);
+
+export default connect(getListPersons, {updatePersonFromAnnuaire, removePersonFromAnnuaire})(ComponentPersonList);

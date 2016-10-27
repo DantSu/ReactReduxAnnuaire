@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createLogger from 'redux-logger';
@@ -19,7 +19,7 @@ const store = createStore(
     applyMiddleware(...middleware)
 );
 
-ReactDOM.render(
+render(
     <Provider store={store}>
         <GlobalComponent />
     </Provider>,
