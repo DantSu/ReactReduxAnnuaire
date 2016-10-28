@@ -10,8 +10,8 @@ const ComponentPersonList = ({persons, actions}) => (
             <td>Port</td>
             <td>Email</td>
             <td>Catégorie</td>
-            <td>Edit</td>
-            <td>Suppr</td>
+            <td className="edit">Edit</td>
+            <td className="suppr">Suppr</td>
         </tr>
         </thead>
         <tbody>

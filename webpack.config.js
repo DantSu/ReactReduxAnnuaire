@@ -24,5 +24,8 @@ module.exports = {
             loaders: ['babel'],
             include: path.join(__dirname, 'app')
         }]
+    },
+    node: {
+        fs: 'empty'
     }
 }
