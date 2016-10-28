@@ -5,13 +5,7 @@ import configureStore from './root/store/configureStore';
 import Root from './root/container/Root';
 
 
-const store = configureStore(localStorage.getItem('dataState') ? JSON.parse(localStorage.getItem('dataState')) : {});
-
-
-store.subscribe(()=>{
-    localStorage.setItem('dataState', JSON.stringify(store.getState()))
-})
-
+const store = configureStore();
 
 render(
     <AppContainer>

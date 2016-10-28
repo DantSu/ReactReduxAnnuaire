@@ -13,8 +13,16 @@ const enhancer = compose(
 );
 
 export default function configureStore(initialState) {
+    
+    if(initialState == undefined && localStorage.getItem('dataState'))
+        initialState = JSON.parse(localStorage.getItem('dataState'));
+    
     const store = createStore(moduleReducer, initialState, enhancer);
-
+    
+    store.subscribe(()=>{
+        localStorage.setItem('dataState', JSON.stringify(store.getState()))
+    })
+    
     if (module.hot) {
         module.hot.accept(
             '../../module/reducer', () =>
