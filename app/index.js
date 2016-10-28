@@ -1,27 +1,31 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import createLogger from 'redux-logger';
-import thunk from 'redux-thunk';
+import { AppContainer } from 'react-hot-loader';
+import configureStore from './root/store/configureStore';
+import Root from './root/container/Root';
 
-import { GlobalComponent, GlobalReducer } from './module';
-
-
-const middleware = [ thunk ];
-if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger());
-}
-
-
-const store = createStore(
-    GlobalReducer,
-    applyMiddleware(...middleware)
-);
+const store = configureStore();
 
 render(
-    <Provider store={store}>
-        <GlobalComponent />
-    </Provider>,
+    <AppContainer>
+        <Root
+            store={ store }
+        />
+    </AppContainer>,
     document.getElementById('app')
 );
+
+
+if (module.hot) {
+    module.hot.accept('./root/container/Root', () => {
+        const RootContainer = require('./root/container/Root').default;
+        render(
+            <AppContainer>
+                <RootContainer
+                    store={ store }
+                />
+            </AppContainer>,
+            document.getElementById('app')
+        );
+    });
+}

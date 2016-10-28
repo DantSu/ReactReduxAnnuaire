@@ -1,9 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import * as types from '../constant/PersonEdit';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as ActionPersonEdit from '../action/PersonEdit';
 import ComponentPersonAddForm from '../component/PersonAddForm';
 
-const getUpdatedPerson = (state) => {
+const mapState = (state) => {
+    console.log('getUpdatedPerson');
     var persons = state.annuaire.persons;
     for(var i in persons) {
         if(!persons[i].isCurrentEdited)
@@ -22,19 +24,11 @@ const getUpdatedPerson = (state) => {
     };
 };
 
-const addPersonToAnnuaire = (nom, tel, port, email, categorie) => (dispatch, getState) => (
-    dispatch({
-        type : types.ADD_PERSON,
-        person : {
-            nom,
-            tel,
-            port,
-            email,
-            categorie,
-            isCurrentEdited: false
-        }
-    })
-);
+const mapDispatch = (dispatch) => {
+    return {
+        actions: bindActionCreators(ActionPersonEdit, dispatch)
+    };
+}
 
 
-export default connect(getUpdatedPerson,{addPersonToAnnuaire})(ComponentPersonAddForm)
+export default connect(mapState,mapDispatch)(ComponentPersonAddForm)

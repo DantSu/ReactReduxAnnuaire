@@ -1,6 +1,7 @@
 import * as types from '../constant/PersonEdit';
 
 const addOrUpdatePerson = (state, person) => {
+    console.log('addOrUpdatePerson');
     let find = false;
 
     for(var i in state) {
@@ -18,6 +19,7 @@ const addOrUpdatePerson = (state, person) => {
 };
 
 const setEditedPerson = (state, index) => {
+    console.log('setEditedPerson');
     for(var i in state) {
         state[i].isCurrentEdited = false;
     }
@@ -26,11 +28,13 @@ const setEditedPerson = (state, index) => {
 };
 
 const removePerson = (state, index) => {
+    console.log('removePerson');
     state.splice(index, 1);
     return state;
 }
 
 const ReducerPersonEdit = (state = [], action) => {
+    console.log('ReducerPersonEdit');
     switch (action.type) {
         case types.ADD_PERSON :
             return addOrUpdatePerson([...state], {...action.person});

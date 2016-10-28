@@ -1,12 +1,9 @@
 import React from 'react';
 import { combineReducers } from 'redux';
-
 import * as Annuaire from './annuaire';
 
-export const GlobalComponent = () => {
-    return (<Annuaire.component />);
-};
-
-export const GlobalReducer = combineReducers({
+const moduleReducer = combineReducers({
     annuaire : Annuaire.reducer
 });
+
+export default moduleReducer;

@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-class ComponentPersonAddForm extends React.Component {
+export default class ComponentPersonAddForm extends React.Component {
     componentDidUpdate() {
         this.inputNom.value = this.props.nom;
         this.inputTel.value = this.props.tel;
@@ -14,20 +14,21 @@ class ComponentPersonAddForm extends React.Component {
         return (
             <form onSubmit={e => {
                 e.preventDefault();
-                this.props.addPersonToAnnuaire(
-                    this.inputNom.value,
-                    this.inputTel.value,
-                    this.inputPort.value,
-                    this.inputEmail.value,
-                    this.inputCategorie.value
-                );
+                console.log('ComponentPersonAddForm');
+                this.props.actions.addPersonToAnnuaire({
+                    nom: this.inputNom.value,
+                    tel: this.inputTel.value,
+                    port: this.inputPort.value,
+                    email: this.inputEmail.value,
+                    categorie: this.inputCategorie.value
+                });
                 this.inputNom.value = '';
                 this.inputTel.value = '';
                 this.inputPort.value = '';
                 this.inputEmail.value = '';
                 this.inputCategorie.value = '';
             }}>
-                <label>Nom et Prénom : <input type="text"  name="nom" required ref={node => {this.inputNom = node;}}/></label>
+                <label>Nom et Prénoms : <input type="text"  name="nom" required ref={node => {this.inputNom = node;}}/></label>
                 <label>Téléphone :     <input type="tel"   name="tel"          ref={node => {this.inputTel = node;}}/></label>
                 <label>Portable :      <input type="tel"   name="portable"     ref={node => {this.inputPort = node;}}/></label>
                 <label>Email :         <input type="email" name="email"        ref={node => {this.inputEmail = node;}}/></label>
@@ -43,6 +44,3 @@ class ComponentPersonAddForm extends React.Component {
         );
     }
 };
-
-
-export default ComponentPersonAddForm;

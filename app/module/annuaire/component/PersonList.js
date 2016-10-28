@@ -1,7 +1,7 @@
 import React from 'react';
 import ComponentPersonItem from './PersonItem';
 
-const ComponentPersonList = ({persons, updatePersonFromAnnuaire, removePersonFromAnnuaire}) => (
+const ComponentPersonList = ({persons, actions}) => (
     <table>
         <thead>
         <tr>
@@ -22,12 +22,12 @@ const ComponentPersonList = ({persons, updatePersonFromAnnuaire, removePersonFro
                                          onUpdateClick={
                                             e => {
                                                 e.preventDefault();
-                                                updatePersonFromAnnuaire(index);
+                                                actions.updatePersonFromAnnuaire(index);
                                             }}
                                          onRemoveClick={
                                             e => {
                                                 e.preventDefault();
-                                                removePersonFromAnnuaire(index);
+                                                actions.removePersonFromAnnuaire(index);
                                             }}
                     />
                 )
