@@ -6,12 +6,12 @@ import ComponentPersonList from '../component/PersonList';
 
 
 
-const mapState = (state) => ({persons : state.annuaire.persons});
+const mapState = (state) => ({state : state.annuaire});
 
 
 const mapDispatch = (dispatch) => {
     return {
-        actions: bindActionCreators(ActionPersonEdit, dispatch)
+        actions:  bindActionCreators(ActionPersonEdit, dispatch)
     };
 }
 

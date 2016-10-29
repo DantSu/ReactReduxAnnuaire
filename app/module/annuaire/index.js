@@ -17,4 +17,4 @@ export const component = () => {
     );
 };
 
-export const reducer = combineReducers({persons : ReducerPersonEdit});
+export const reducer = ReducerPersonEdit;

@@ -3,7 +3,7 @@ import * as types from '../constant/PersonEdit';
 export const addPersonToAnnuaire = ({nom, tel, port, email, categorie}) =>  {
     console.log('addPersonToAnnuaire');
     return {
-        type: types.ADD_PERSON,
+        type: types.ACTION_ADD_PERSON,
         person: {
             nom,
             tel,
@@ -18,7 +18,7 @@ export const addPersonToAnnuaire = ({nom, tel, port, email, categorie}) =>  {
 export const updatePersonFromAnnuaire = (index) => {
     console.log('updatePersonFromAnnuaire');
     return {
-        type: types.UPDATE_PERSON,
+        type: types.ACTION_UPDATE_PERSON,
         index
     };
 };
@@ -26,7 +26,15 @@ export const updatePersonFromAnnuaire = (index) => {
 export const removePersonFromAnnuaire = (index) => {
     console.log('removePersonFromAnnuaire');
     return {
-        type: types.REMOVE_PERSON,
+        type: types.ACTION_REMOVE_PERSON,
         index
+    };
+};
+
+export const sortPersonFromAnnuaire = (field) =>  {
+    console.log('sortPersonFromAnnuaire');
+    return {
+        type: types.ACTION_SORT,
+        field
     };
 };

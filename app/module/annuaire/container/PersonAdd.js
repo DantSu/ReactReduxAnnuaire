@@ -28,7 +28,7 @@ const mapDispatch = (dispatch) => {
     return {
         actions: bindActionCreators(ActionPersonEdit, dispatch)
     };
-}
+};
 
 
 export default connect(mapState,mapDispatch)(ComponentPersonAddForm)

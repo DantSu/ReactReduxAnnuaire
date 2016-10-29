@@ -65,10 +65,6 @@ table {
     margin-bottom: 30px;
     overflow: hidden;
 }
-table tr > td {
-    padding: 10px;
-}
-
 table > thead > tr {
     background-color: rgba(255, 255, 255, 0.5);
 }
@@ -77,6 +73,32 @@ table > thead > tr > td {
     text-align: center;
     font-weight: bold;
 }
+table > thead > tr > td > a {
+    display: block;
+    padding: 10px;
+    color: #000000;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 20px 14px;
+}
+table > thead > tr > td.actif > a {
+    display: block;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #2486b3;
+}
+
+table > thead > tr > td.actif > a {
+    background-color: #2486b3;
+}
+table > thead > tr > td.asc > a {
+    background-image: url(../images/arrow-down.svg);
+}
+table > thead > tr > td.desc > a {
+    background-image: url(../images/arrow-up.svg);
+}
+
 table > thead > tr > td.edit,
 table > thead > tr > td.suppr{
     width: 10%;
@@ -91,12 +113,33 @@ table > tbody > tr.blue {
     color: #ffffff;
     background-color: #2486b3;
 }
+table > tbody > tr > td {
+    padding: 10px;
+}
 table > tbody > tr > td.edit,
 table > tbody > tr > td.suppr{
     text-align: center;
 }
-
-
+table > tbody > tr > td.edit > a,
+table > tbody > tr > td.suppr > a{
+    font-size: 1px;
+    line-height: 1px;
+    color: transparent;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 24px;
+    height: 24px;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+table > tbody > tr > td.edit > a {
+    background-image: url(../images/edit.svg);
+}
+table > tbody > tr > td.suppr > a{
+    background-image: url(../images/remove.svg);
+}
 
 form {
     border-radius: 5px;
